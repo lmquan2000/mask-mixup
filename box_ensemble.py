@@ -25,6 +25,8 @@ def read_bbox_annotations(list_model_path: list) -> list:
 
 
 def preprocess_bbox_annotations(list_model_path: list):
+
+    cocoGt = COCO(GT_PATH)
     for model in list_model_path:
         with open(model, 'r') as json_file:
             pred = json.load(json_file)
@@ -39,7 +41,6 @@ def preprocess_bbox_annotations(list_model_path: list):
             json.dump(pred, json_file)
         json_file.close()
 
-        cocoGt = COCO('./gt_bbox.json')
         cocoDt = cocoGt.loadRes(model.replace('.json', '_bbox.json'))
         cocoEval = COCOeval(cocoGt, cocoDt, 'bbox')
         # cocoEval.params.imgIds  = imgIds
