@@ -8,7 +8,6 @@ from glob import glob
 from copy import deepcopy
 from PIL import Image, ImageDraw
 from sklearn.metrics import confusion_matrix
-from tqdm.notebook import tqdm
 from matplotlib import pyplot as plt
 
 
