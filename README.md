@@ -1,1 +1,1 @@
-### Mixup Augmentation for Instance Segmentation
+### Mask Mixup Augmentation for Instance Segmentation
