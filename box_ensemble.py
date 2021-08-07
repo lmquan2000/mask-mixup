@@ -96,9 +96,9 @@ def boxes_ensemble(gt: dict, list_model: list, weights: list, iou_thr: float) ->
 def optimize_iou_thr(gt: dict, list_model: list, weights: list):
     best_map = 0
     best_thres = 0
+    cocoGt = COCO(GT_PATH)
     for iou_thr in tqdm(np.arange(0.3, 0.95, 0.01)):
         ensembles = boxes_ensemble(gt, list_model, weights, iou_thr)
-        cocoGt = COCO(GT_PATH)
         cocoDt = cocoGt.loadRes(ensembles)
         cocoEval = COCOeval(cocoGt, cocoDt, 'bbox')
         cocoEval.evaluate()
